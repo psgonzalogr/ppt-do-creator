@@ -1,0 +1,40 @@
+{
+ "Portada": [
+  "Esta es una presentación de ejemplo: muestra la línea gráfica y los componentes disponibles.",
+  "Presiona <b>H</b> para ver los atajos en cualquier momento."
+ ],
+ "Objetivo": [
+  "Explicar para qué sirve la plantilla y qué se espera de cada presentación."
+ ],
+ "Módulo 01": [
+  "Portadilla de módulo: número gigante en contorno y fondo oscuro."
+ ],
+ "Atajos de navegación": [
+  "Prueba en vivo: clic en la mitad derecha o izquierda, escribe un número y presiona Enter, pasa el mouse por la barra inferior."
+ ],
+ "¿PowerPoint o HTML?": [
+  "Ejemplo de tabla comparativa: las filas aparecen escalonadas."
+ ],
+ "Módulo 02": [
+  "Los siguientes componentes se pueden reutilizar en cualquier presentación."
+ ],
+ "Diagrama por pasos": [
+  "Ejemplo de <b>data-steps=\"3\"</b>.",
+  "<b>Clic 1:</b> comunicación descendente. <b>Clic 2:</b> ascendente. <b>Clic 3:</b> ambas."
+ ],
+ "Reglas de redacción": [
+  "Ejemplo de pirámide: se construye desde la base y la recorre un brillo."
+ ],
+ "Flujo de trabajo": [
+  "Ejemplo de secuencia por fases, con una línea que se recorre de forma continua."
+ ],
+ "Elementos de cada diapositiva": [
+  "Ejemplo de filas con letra, útil para siglas o modelos (como el Modelo BEST)."
+ ],
+ "Conclusiones": [
+  "Ejemplo de cierre con tres ideas clave."
+ ],
+ "Gracias": [
+  "Cierre con fondo oscuro y anillos en movimiento."
+ ]
+}
