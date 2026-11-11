@@ -51,7 +51,12 @@ def main():
     graves, avisos = [], []
 
     with sync_playwright() as p:
-        b = p.chromium.launch()
+        try:
+            b = p.chromium.launch()
+        except Exception as e:
+            raise SystemExit('No hay navegador Chromium disponible para verificar '
+                             f'({type(e).__name__}). Revisa a mano: abre el HTML en Chrome, recorre todas las '
+                             'diapositivas y comprueba títulos, textos y que nada se salga de la diapositiva.')
         # ---- 1-2. consola y navegación (vista normal) -------------------------------------
         pg = b.new_page(viewport={'width': 1280, 'height': 720})
         errores = []
