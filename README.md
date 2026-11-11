@@ -27,6 +27,16 @@ git clone https://github.com/psgonzalogr/ppt-do-creator ~/.claude/skills/ppt-do-
 
 Sube la carpeta del repositorio (o el ZIP) a la conversación o al proyecto y pide: *«Lee `SKILL.md` y sigue sus instrucciones para crear mi presentación»*. Necesita poder ejecutar código Python para construir los archivos.
 
+## Cómo usarla con solo el enlace del repositorio (sin instalar)
+
+No hace falta instalar nada. En un chat nuevo de Claude (o de otro asistente con acceso a GitHub), copia y pega:
+
+> Lee el repositorio https://github.com/psgonzalogr/ppt-do-creator, empezando por `SKILL.md`, y sigue sus instrucciones para crear una presentación DO con el material adjunto. No lo instales ni armes un ZIP: úsalo directamente. Entrégame el HTML y el PDF.
+
+Si en cambio le pides «instala la skill», Claude responderá que no puede instalar skills en tu cuenta y armará un ZIP. Es normal: solo la subida del ZIP (ver «Cómo instalarla») la deja instalada de forma permanente.
+
+**Si el PDF no se genera:** algunos chats no tienen red ni navegador interno. El HTML siempre se construye; el PDF se saca desde Chrome en un minuto: abre el HTML agregando `?print=1` al final de la dirección, **Ctrl+P → Guardar como PDF**, márgenes **Ninguno** y activa **Gráficos de fondo**.
+
 ## Cómo usarla
 
 Escribe al asistente, por ejemplo:

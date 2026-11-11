@@ -27,7 +27,8 @@ Convierte el contenido que entregue la persona (un PowerPoint, un PDF, un Word, 
 
 ## Flujo de trabajo
 
-1. **Preparar el entorno** (una vez): `pip install playwright pillow && playwright install chromium`. Si no se puede instalar, igual se construye el HTML y el PDF se saca a mano (ver README).
+1. **Preparar el entorno** (una vez): `pip install playwright pillow && playwright install chromium`. Si no hay red o falta Chromium (es lo habitual en el chat de claude.ai), **no insistas ni busques otra forma de instalar**: construye igual el HTML con `construir.py` (avisa del PDF y sigue), entrega el HTML y explica cómo sacar el PDF desde Chrome en tres pasos (abrir `Nombre.html?print=1`, Ctrl+P → Guardar como PDF con márgenes «Ninguno» y «Gráficos de fondo»). Dilo con claridad en tu respuesta.
+   - Si la persona te dio el enlace del repositorio, **úsalo directamente**: lee estos archivos y trabaja con ellos. No ofrezcas «instalar la skill» ni armes un ZIP, salvo que lo pidan expresamente.
 2. **Reunir los datos.** Pregunta solo lo que falte y cambie el resultado: nombre de la presentación, curso o módulo, imágenes que deben mantenerse, diapositivas que necesitan una explicación gráfica, si agregar diapositiva de objetivo. Si la persona ya dio contexto, no repitas preguntas.
 3. **Leer todo el contenido** de los archivos adjuntos (`python-pptx` para .pptx; si hay PDF, mira también cómo se ve cada página).
 4. **Planificar diapositiva por diapositiva** antes de escribir HTML: qué dice, qué composición usa y qué se mueve. Busca composiciones parecidas: `python3 scripts/catalogo.py referencia/ejemplos_completos/Retroalimentacion_Efectiva_DO.html` y luego `… 7` para ver el marcado de la diapositiva 7.
