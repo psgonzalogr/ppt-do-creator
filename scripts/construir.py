@@ -13,7 +13,7 @@ La carpeta de proyecto contiene:
     imagenes/            (opcional) fotos y documentos usados con {{img:archivo.jpg}}
 
 Marcadores que se resuelven en diapositivas.html y estilos.css:
-    {{icon:nombre}}       ícono Lucide en línea (assets/iconos/nombre.svg)
+    {{icon:nombre}}       ícono Lucide en línea (assets/iconos.json; ver scripts/catalogo.py --iconos)
     {{iconinner:nombre}}  solo el contenido del ícono, para usarlo dentro de un <svg> propio
     {{img:archivo}}       imagen incrustada como data URI (busca en imagenes/ y luego en assets/logos/)
 """
@@ -21,7 +21,8 @@ import argparse, base64, html, json, os, re, sys
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FUENTES = os.path.join(RAIZ, 'assets', 'fuentes')
-ICONOS = os.path.join(RAIZ, 'assets', 'iconos')
+ICONOS = os.path.join(RAIZ, 'assets', 'iconos.json')
+_ICONOS = None
 LOGOS = os.path.join(RAIZ, 'assets', 'logos')
 
 MIME = {'png': 'image/png', 'jpg': 'image/jpeg', 'jpeg': 'image/jpeg', 'svg': 'image/svg+xml',
@@ -48,11 +49,16 @@ def bloque_fuentes():
 
 
 def leer_icono(nombre):
-    ruta = os.path.join(ICONOS, nombre + '.svg')
-    if not os.path.exists(ruta):
-        sugeridos = [f[:-4] for f in os.listdir(ICONOS) if f.endswith('.svg') and nombre.split('-')[0] in f][:8]
-        raise SystemExit(f'ERROR: no existe el ícono «{nombre}». Parecidos: {", ".join(sugeridos) or "(ninguno)"}')
-    return re.sub(r'<!--.*?-->', '', open(ruta, encoding='utf8').read(), flags=re.S).strip()
+    """Devuelve el SVG del ícono Lucide `nombre` (assets/iconos.json agrupa los 1.539 íconos en un solo archivo)."""
+    global _ICONOS
+    if _ICONOS is None:
+        with open(ICONOS, encoding='utf8') as f:
+            _ICONOS = json.load(f)
+    if nombre not in _ICONOS:
+        sugeridos = [k for k in _ICONOS if nombre.split('-')[0] in k][:8]
+        raise SystemExit(f'ERROR: no existe el ícono «{nombre}». Parecidos: {", ".join(sugeridos) or "(ninguno)"}. '
+                         'Lista completa: python3 scripts/catalogo.py --iconos')
+    return _ICONOS[nombre]
 
 
 def resolver(texto, carpeta_img, cache_img):

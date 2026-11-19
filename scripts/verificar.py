@@ -113,7 +113,7 @@ def main():
                 vistos.add((i, nombre))
                 avisos.append(f'Diapositiva {i}: «{nombre}» sobresale del borde (si es decorativo, debe ir dentro de un <svg> de 1920×1080 que lo recorte)')
         titulos = pg.evaluate('''() => [...document.querySelectorAll('.slide')].map((s, i) =>
-            [...s.querySelectorAll('h1,h2')].map(h => { const sp = [...h.querySelectorAll(':scope > span')]; return [i + 1, sp.length ? sp.map(x => x.textContent).join(' ') : h.textContent]; }))''')
+            [...s.querySelectorAll('h1,h2')].map(h => { const sp = [...h.querySelectorAll(':scope > span')]; const propio = [...h.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()); return [i + 1, sp.length && !propio ? sp.map(x => x.textContent).join(' ') : h.textContent]; }))''')
         for grupo in titulos:
             for i, txt in grupo:
                 mal = titulo_sospechoso(txt)

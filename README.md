@@ -84,4 +84,4 @@ Los cambios entran por pull request y los fusiona la Jefatura de DO. No subas pr
 
 ## Licencias de terceros
 
-Fuentes **Montserrat** y **Source Sans 3** (SIL Open Font License 1.1) e íconos **Lucide** (licencia ISC, ver `assets/iconos/LICENSE-Lucide.txt`). Los logos pertenecen al Hospital Regional de Antofagasta y a su Departamento de Desarrollo Organizacional.
+Fuentes **Montserrat** y **Source Sans 3** (SIL Open Font License 1.1) e íconos **Lucide** (licencia ISC, ver `assets/LICENSE-Lucide.txt`). Los logos pertenecen al Hospital Regional de Antofagasta y a su Departamento de Desarrollo Organizacional.
