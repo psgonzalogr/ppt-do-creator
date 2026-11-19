@@ -18,4 +18,8 @@ with zipfile.ZipFile(DESTINO, 'w', zipfile.ZIP_DEFLATED) as z:
                 continue
             ruta = os.path.join(carpeta, n)
             z.write(ruta, os.path.join('ppt-do-creator', os.path.relpath(ruta, RAIZ)))
-print('Listo:', DESTINO, f'({os.path.getsize(DESTINO) // 1024} KB)')
+with zipfile.ZipFile(DESTINO) as z:
+    n = len(z.namelist())
+print('Listo:', DESTINO, f'({os.path.getsize(DESTINO) // 1024} KB, {n} archivos)')
+if n >= 200:
+    print('AVISO: Claude acepta como máximo 200 archivos por skill; reduce el contenido.')

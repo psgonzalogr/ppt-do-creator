@@ -8,6 +8,10 @@ Uso:
         → imprime el HTML de la diapositiva 7 (con las imágenes incrustadas abreviadas) listo para
           copiarlo a diapositivas.html y cambiar los textos
 
+    python3 scripts/catalogo.py --iconos [texto]
+        → lista los nombres de los íconos Lucide disponibles para {{icon:nombre}}, filtrados por «texto»
+          (por ejemplo: --iconos users, --iconos chart)
+
 El CSS de todas esas diapositivas ya viene en motor/motor.html, así que el marcado copiado se ve igual.
 Las fotos y documentos de la diapositiva copiada NO se copian: reemplázalos por {{img:archivo}} propios.
 """
@@ -21,9 +25,20 @@ def secciones(t):
     return re.findall(r'<section class="slide.*?</section>', zona, re.S)
 
 
+def listar_iconos(filtro):
+    import json, os
+    ruta = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'iconos.json')
+    nombres = sorted(json.load(open(ruta, encoding='utf8')))
+    sel = [n for n in nombres if filtro in n]
+    print(f'{len(sel)} de {len(nombres)} íconos' + (f' que contienen «{filtro}»' if filtro else ''))
+    print(', '.join(sel))
+
+
 def main():
     if len(sys.argv) < 2:
         raise SystemExit(__doc__)
+    if sys.argv[1] == '--iconos':
+        return listar_iconos(sys.argv[2] if len(sys.argv) > 2 else '')
     t = open(sys.argv[1], encoding='utf8').read()
     sec = secciones(t)
     if len(sys.argv) == 2:

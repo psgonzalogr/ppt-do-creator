@@ -23,7 +23,7 @@ Convierte el contenido que entregue la persona (un PowerPoint, un PDF, un Word, 
 | `referencia/ejemplos_completos/` | Dos presentaciones reales completas (27 y 36 diapositivas): fuente de composiciones. |
 | `referencia/Prompt_PPT_a_HTML_DO.md` | Especificación completa del diseño y del motor. Léela si dudas de una regla. |
 | `referencia/componentes.md` | Guía rápida de clases, animaciones, pasos y errores frecuentes. **Léela antes de escribir diapositivas.** |
-| `assets/` | Logos, fuentes (Montserrat y Source Sans 3) e íconos Lucide. |
+| `assets/` | Logos, fuentes (Montserrat y Source Sans 3) e íconos Lucide (`iconos.json`). |
 
 ## Flujo de trabajo
 
@@ -56,7 +56,7 @@ Convierte el contenido que entregue la persona (un PowerPoint, un PDF, un Word, 
 - Títulos en Montserrat y texto en Source Sans 3. Tamaños: título 56–66 px, párrafo 26–31 px, tarjetas 22–27 px; **nunca menos de 19 px**.
 - Los logos del Hospital y de DO, el número «07 / 27» y el pie con el nombre salen **automáticamente** en todas las diapositivas. Logos adicionales (Calidad de Vida, SOGA) se usan con `{{img:Calidad_de_Vida.png}}`.
 - **Cada diapositiva tiene una composición pensada para su contenido y al menos un elemento en movimiento continuo.** Cuando el contenido describe un proceso, una relación o una estructura, hazlo diagrama animado en vez de lista. Evita el «todo centrado» y las listas con viñetas.
-- Íconos: `{{icon:nombre}}` (Lucide, 1.500 disponibles en `assets/iconos/`). Si el nombre no existe, el constructor sugiere parecidos.
+- Íconos: `{{icon:nombre}}` (Lucide, 1.539 disponibles; para buscar uno: `python3 scripts/catalogo.py --iconos texto`). Si el nombre no existe, el constructor sugiere parecidos.
 - Imágenes: `{{img:archivo.jpg}}` busca en `imagenes/` del proyecto y luego en `assets/logos/`. Fotos en JPEG de ~1000–1700 px de ancho.
 
 ## Anatomía mínima de una diapositiva
